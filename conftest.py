@@ -11,9 +11,12 @@ def browser(request):
     language = request.config.getoption("language")
 
 
+    options = Options()
+    options.add_experimental_option('prefs', {'intl.accept_languages': language})
 
-    options = webdriver.ChromeOptions()
-    options.add_argument(f'--lang={language}')
+    #options = webdriver.ChromeOptions()
+    #options.add_argument(f'--lang={language}')
+    
     options.binary_location = r"D:\Chrome-for-Test-win64\chrome.exe"
 
     browser = webdriver.Chrome(service=Service(), options=options)
